@@ -1,4 +1,5 @@
 ﻿@page
+@using DotNetGuide.Application.Utility
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -8,26 +9,82 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" class="row" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
             <div class="form-floating mb-3">
+                <input asp-for="Input.Name" class="form-control" autocomplete="username" aria-required="true" placeholder="John Doe" />
+                <label asp-for="Input.Name" class="ms-2 text-muted">Name</label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
+                <label asp-for="Input.Email" class="ms-2 text-muted">Email</label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-3 col-md-6">
+                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phone" aria-required="true" placeholder="Phone No" />
+                <label asp-for="Input.PhoneNumber" class="ms-2 text-muted">Phone No</label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-floating mb-3 col-md-6">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
+                <label asp-for="Input.Password" class="ms-2 text-muted">Password</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
+
+            <div class="form-floating mb-3 col-md-6">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <label asp-for="Input.ConfirmPassword" class="ms-2 text-muted">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+
+
+            <div class="form-floating mb-3 col-md-6">
+                <input asp-for="Input.StreetAddress" class="form-control" autocomplete="on" aria-required="false" placeholder="your street address" />
+                <label asp-for="Input.StreetAddress" class="ms-2 text-muted">Street Address</label>
+                <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input asp-for="Input.City" class="form-control" autocomplete="on" aria-required="true" placeholder="City" />
+                <label asp-for="Input.City" class="ms-2 text-muted">City</label>
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input asp-for="Input.State" class="form-control" autocomplete="on" aria-required="true" placeholder="State" />
+                <label asp-for="Input.State" class="ms-2 text-muted">State</label>
+                <span asp-validation-for="Input.State" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input asp-for="Input.PostalCode" class="form-control" autocomplete="on" aria-required="true" placeholder="Postal Code" />
+                <label asp-for="Input.PostalCode" class="ms-2 text-muted">Postal Code</label>
+                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole(SD.Role_Admin))
+            {
+                <div class="form-floating mb-3 col-md-6">
+                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
+                        <option selected disabled>--Select Role--</option>
+                    </select>
+                    <label asp-for="Input.Role">Select Role</label>
+                </div>
+
+                <div class="form-floating mb-3 col-md-6">
+                    <select asp-for="Input.CompanyId" asp-items="@Model.Input.CompanyList" style="display:none;" class="form-select">
+                        <option selected disabled>--Select Company--</option>
+                    </select>
+                </div>
+            }
+
+            <div class="col-12">
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            </div>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
@@ -39,8 +96,10 @@
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                article
+                                about setting up this ASP.NET application to support logging in via external services
+                            </a>.
                         </p>
                     </div>
                 }
@@ -64,4 +123,17 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('#Input_Role').change(function () {
+                var selection = $('#Input_Role Option:Selected').text();
+                if (selection == 'Company') {
+                    $('#Input_CompanyId').show()
+                }
+                else {
+                    $('#Input_CompanyId').hide()
+                }
+            });
+        });
+    </script>
 }

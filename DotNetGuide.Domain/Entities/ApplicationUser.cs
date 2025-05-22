@@ -17,5 +17,6 @@ namespace DotNetGuide.Domain.Entities
         public string? PostalCode { get; set; }
         [NotMapped]
         public string Role { get; set; }
+        public string? CompanyId { get; set; }
     }
 }
