@@ -37,6 +37,12 @@ Microsoft.AspNetCore.Identity.UI - Version 8.0.16
 Microsoft.EntityFrameworkCore.SqlServer - Version 8.0.16 - as default Database server. You can choose different based on your need.  
 Microsoft.EntityFrameworkCore.Tools - Version 8.0.16 - To add migration and Database Update  
 Microsoft.EntityFrameworkCore.Design - Version 8.0.16 - Dependency of Tools_  
+
+**Scaffolding Identity**  
+Identity login pages generated using Right click on DotNetGuide.Web project> Add> New Scaffoled Item > Choose Identity from left sidebar > Choose the files > Choose required files (I have included all) > SelectDbContext class > Click on Add.
+![image](https://github.com/user-attachments/assets/aaba43da-63eb-49f4-8763-967d156d88fa)
+
+
  
 # Explanation of Features
 
