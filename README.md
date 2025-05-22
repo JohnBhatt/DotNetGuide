@@ -21,7 +21,8 @@ Microsoft.EntityFrameworkCore.Tools - Version 8.0.16 - To add migration and Data
 **Project Dependency:** _DotNetGuide.Application_  
 
 **Nuget Packages:** 
-_Microsoft.AspNetCore.Identity.EntityFrameworkCore - Version 8.0.16  
+_Microsoft.EntityFrameworkCore - Version 8.0.16  
+Microsoft.AspNetCore.Identity.EntityFrameworkCore - Version 8.0.16  
 Microsoft.EntityFrameworkCore.SqlServer - Version 8.0.16 - as default Database server. You can choose different based on your need.  
 Microsoft.EntityFrameworkCore.Tools - Version 8.0.16 - To add migration and Database Update  
 Microsoft.EntityFrameworkCore.Design - Version 8.0.16 - Dependency of Tools_  
