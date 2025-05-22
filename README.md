@@ -50,3 +50,13 @@ Identity login pages generated using Right click on DotNetGuide.Web project> Add
 ## Using Brevo api for Email sending  
 Add you API Key in appsettings.json and update EmailSender.cs inside DotNetGuide.Application.Utility to change name and other values. 
 
+![image](https://github.com/user-attachments/assets/faf89bfd-8a0c-4bea-baea-c92ed9ab7200)
+
+To add new Models.
+
+1. Add Entity class inside Domain.Entities
+2. Create a New Interface and Repository respectively inside Application and Infrastructure projects. You can create a copy of IAppUserRepository and AppUserRepository respectively, then rename them and update you entity.
+3. Once Repository and Interfaces are created, register both of them inside IUnitOfWork and UnitOfWork, you can look at the existing one for AppUser.
+4. Create a Controller and instead of injecting DbContext directly, inject Repository and UnitOfWork and create in views accordingly.  
+
+
