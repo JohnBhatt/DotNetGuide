@@ -1,1 +1,52 @@
-# DotNetGuide
+# DotNetGuide - ASP.NET Core 8.0 C# - Documentation & Explanation
+
+
+## DotNetGuide.Application - Class Library
+**Project Dependency:** _DotNetGuide.Domain_
+
+**Nuget Packages:**   
+_Microsoft.AspNetCore.Identity.EntityFrameworkCore - Version 8.0.16  
+Microsoft.AspNetCore.Identity.UI - Version 8.0.16  
+brevo_csharp - Version 1.1.1 - For Email sending purpose_
+
+
+## DotNetGuide.Domain
+**Project Dependency:** _none_  
+
+**Nuget Packages:** 
+_Microsoft.AspNetCore.Identity.EntityFrameworkCore - Version 8.0.16  
+Microsoft.EntityFrameworkCore.Tools - Version 8.0.16 - To add migration and Database Update_
+
+## DotNetGuide.Infrastructure
+**Project Dependency:** _DotNetGuide.Application_  
+
+**Nuget Packages:** 
+_Microsoft.EntityFrameworkCore - Version 8.0.16  
+Microsoft.AspNetCore.Identity.EntityFrameworkCore - Version 8.0.16  
+Microsoft.EntityFrameworkCore.SqlServer - Version 8.0.16 - as default Database server. You can choose different based on your need.  
+Microsoft.EntityFrameworkCore.Tools - Version 8.0.16 - To add migration and Database Update  
+Microsoft.EntityFrameworkCore.Design - Version 8.0.16 - Dependency of Tools_  
+
+## DotNetGuide.Web
+**Project Dependency:**  
+_DotNetGuide.Application  
+DotNetGuide.Infrastructure_
+
+**Nuget Packages:**  
+_Microsoft.AspNetCore.Identity.EntityFrameworkCore - Version 8.0.16  
+Microsoft.AspNetCore.Identity.UI - Version 8.0.16  
+Microsoft.EntityFrameworkCore.SqlServer - Version 8.0.16 - as default Database server. You can choose different based on your need.  
+Microsoft.EntityFrameworkCore.Tools - Version 8.0.16 - To add migration and Database Update  
+Microsoft.EntityFrameworkCore.Design - Version 8.0.16 - Dependency of Tools_  
+
+**Scaffolding Identity**  
+Identity login pages generated using Right click on DotNetGuide.Web project> Add> New Scaffoled Item > Choose Identity from left sidebar > Choose the files > Choose required files (I have included all) > SelectDbContext class > Click on Add.
+![image](https://github.com/user-attachments/assets/aaba43da-63eb-49f4-8763-967d156d88fa)
+
+
+ 
+# Explanation of Features
+
+## Using Brevo api for Email sending  
+Add you API Key in appsettings.json and update EmailSender.cs inside DotNetGuide.Application.Utility to change name and other values. 
+
